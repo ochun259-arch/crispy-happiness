@@ -1,7 +1,0 @@
-echo "# crispy-happiness" >> README.md     -> 创建一个名为 README.md 的文件，并向其中写入内容 # crispy-happiness
-git init  -> 在当前目录下初始化一个新的 Git 仓库
-git add README.md  -> 将 README.md 文件添加到 Git 的暂存区
-git commit -m "first commit"  -> 将暂存区的内容正式提交到 Git 仓库，生成一个新的版本记录
-git branch -M main  -> 将当前分支重命名为 main
-git remote add origin https://github.com/ochun259-arch/crispy-happiness.git  -> 为本地仓库添加一个名为 origin 的远程仓库地址
-git push -u origin main  -> 将本地仓库的内容推送到远程仓库，并建立上下游关联
