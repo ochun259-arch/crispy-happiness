@@ -6,11 +6,9 @@ import matplotlib.pyplot as plt  # 导入Matplotlib库，用于绘制图表
 
 # 从Excel文件中读取数据到DataFrame
 df = pd.read_excel("./source.xlsx")
-print(df)
 
 # 使用fillna方法将DataFrame中的缺失值替换为0
 df1 = df.fillna(0)
-print(df1)
 
 # 从DataFrame中提取考试分数列的值
 df2 = df1['attendance'].values
@@ -19,14 +17,13 @@ df2 = df1['attendance'].values
 df3 = df1['exam'].values
 
 # 使用NumPy的round函数计算最终成绩，考试分数占70%，出勤分数占30%
-df4 = df2 * 0.7 + df3 * 0.3
+df4 = np.round(df2 * 0.3 + df3 * 0.7)
 
 # 将计算得到的最终成绩添加到DataFrame的新列'finally'中
 df['finally'] = df4
 
 # 使用where函数根据最终成绩判断是否通过（60分及以上），并创建新列'pass'
 df['pass'] = np.where(df['finally'] >= 60,'yes','no')
-print(df['pass'])
 
 df.to_excel('./source1.xlsx')
 
@@ -35,7 +32,6 @@ values = np.arange(0,110,10)
 
 # 使用np.histogram函数计算每个区间的学生人数
 hist,base = np.histogram(df['finally'], bins=values)
-print(base)
 
 # 创建一个图表实例
 fig = plt.figure()
