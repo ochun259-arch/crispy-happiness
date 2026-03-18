@@ -17,7 +17,7 @@ def calcAndDrawHist(image_gray):
 
     for h in range(256):
         # 在循环里，对每一列数据做一次归一化处理，防止其超出模板图的范围
-        intensity = int(temp * hist[h] / maxVal)
+        intensity = int(temp * hist[h][0] / maxVal)
         cv2.line(histImg, (h, 256), (h, 256 - intensity), (255, 0, 0))
 
     return histImg
