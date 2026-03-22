@@ -38,6 +38,7 @@ mask = cv2.bitwise_or(mask_white,mask_yellow)
 # 膨胀
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (7, 7))
 image_pz = cv2.dilate(mask, kernel,iterations=2)
+
 #
 cv2.imshow("image_hsv",image_hsv)
 cv2.imshow("make_white",mask_white)
