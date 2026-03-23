@@ -1,5 +1,3 @@
-from curses.textpad import rectangle
-
 import cv2
 # 读取图片
 image_np = cv2.imread("lena.png")
@@ -18,11 +16,12 @@ y_min,y_max = 270,400
 # 参数3：要切割的右下角坐标点
 # 参数4：切割线条的颜色
 # 参数5：切割线条的粗细程度
-cv2.rectangle(image_np,(x_min-2,y_min-2),(x_max-2,y_max-2),(0,0,255),2)
+image_1= cv2.rectangle(image_np,(x_min-2,y_min-2),(x_max-2,y_max-2),(0,0,255),2)
 
 # 使用np数组的切片进行图片切割
 image_roi = image_np[y_min:y_max,x_min:x_max]
 
 # 显示结果
+cv2.imshow("1",image_1)
 cv2.imshow("image_roi",image_roi)
 cv2.waitKey(0)

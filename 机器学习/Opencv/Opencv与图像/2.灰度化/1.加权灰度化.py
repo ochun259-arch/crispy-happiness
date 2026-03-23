@@ -34,8 +34,7 @@ weight_blue = 0.114
 for i in range(image_shape[0]):
     for j in range(image_shape[1]):
         # 遍历到所有的像素点之后，开始进行加权平均的计算
-        image_gray[i][j] = round(image_np[i, j][0] * weight_blue + image_np[i, j][1] * weight_green \
-                                 + image_np[i, j][2] * weight_red)
+        image_gray[i][j] = round(image_np[i, j][0] * weight_blue + image_np[i, j][1] * weight_green + image_np[i, j][2] * weight_red)
 
 
 # 显示彩色图
