@@ -59,16 +59,17 @@ def dan():
     # 进行前向传播
     with torch.no_grad():
         outputs = model(input_batch)
+        # 计算概率分布
+        probabilities = torch.softmax(outputs, dim=1)
+        # 获取置信度和预测类别
+        confidence, predicted_idx = probabilities.max(1)
 
-    # 找到最大值的索引
-    _, predicted_idx = outputs.max(1)
+    predicted_class = class_names[predicted_idx.item()]
+    confidence_value = confidence.item()
 
-    # 将结果转化为整数
-    predicted_idx = predicted_idx.item()
-
-    # 得到最终预测结果
-    predicted_class = class_names[predicted_idx]
     print(f"预测结果: {predicted_class}")
+    print(f"置信度: {confidence_value:.2%}")
+
 
 # 预测文件夹里所有图片
 def duo():
@@ -84,11 +85,15 @@ def duo():
 
             with torch.no_grad():
                 outputs = model(input_batch)
+                probabilities = torch.softmax(outputs, dim=1)
+                confidence, predicted_idx = probabilities.max(1)
 
-            _, predicted_idx = outputs.max(1)
             predicted_class = class_names[predicted_idx.item()]
+            confidence_value = confidence.item()
+            # success_count += 1
 
             print(f"{filename} -> {predicted_class}")
+            print(f"置信度：{confidence_value:.2%}")
 
 def ck():
     model.eval()
@@ -156,7 +161,7 @@ if __name__ == "__main__":
         print("  4. 退出系统")
         print("=" * 40)
 
-        choice = input("请选择 (1-4): ").strip()
+        choice = input("请输入功能编号: ").strip()
 
         if choice == "1":
             dan()

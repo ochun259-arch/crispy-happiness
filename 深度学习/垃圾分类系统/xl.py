@@ -107,7 +107,7 @@ if __name__ == "__main__":
             train_correct += (predicted == labels).sum().item()  # 求预测和真实标签相等的布尔值的和，并转换为python数字类型
 
         train_acc = train_correct / len(train_dataset)  # 计算准确率
-        train_loss = train_loss / len(train_dataloader)  # 计算平均损失
+        train_loss = train_loss / len(train_dataloader)  # 计算平均损失才
 
         # 验证模型
         model.eval()
