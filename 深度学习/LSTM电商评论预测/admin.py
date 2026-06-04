@@ -129,7 +129,7 @@ class DataProcessor:
         return X, y
 
 # 模型训练
-def train_model(model, train_loader, val_loader, epochs=10, lr=0.001):
+def train_model(model, train_loader, val_loader, epochs=100, lr=0.001):
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
     best_acc = 0.0
@@ -273,7 +273,7 @@ def main():
     print('\n5. 创建并训练模型...')
     model = LSTMModel(vocab_size=processor.vocab_size).to(device)
     print(f'模型参数量: {sum(p.numel() for p in model.parameters()):,}')
-    train_model(model, train_loader, val_loader, epochs=10)
+    train_model(model, train_loader, val_loader, epochs=100)
 
     print('\n6. 测试集评估...')
     summary = evaluate_model(model, test_loader)

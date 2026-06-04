@@ -7,7 +7,7 @@ from pathlib import Path
 import pandas as pd
 import torch
 
-_path = Path(__file__).with_name('1.py')
+_path = Path(__file__).with_name('admin.py')
 _spec = importlib.util.spec_from_file_location('lstm_train', _path)
 _lstm = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_lstm)
