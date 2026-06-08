@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+langchain
+langchain-openai
+langchain-community
+pydantic-settings
+faiss-cpu
+sentence-transformers

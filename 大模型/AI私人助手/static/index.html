@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 生活助手</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/>
+            <path d="M5 19l1 3 1-3 3-1-3-1-1-3-1 3-3 1 3 1z"/>
+          </svg>
+        </div>
+        <div>
+          <h1>AI 生活助手</h1>
+          <p>你的贴心生活伙伴</p>
+        </div>
+      </div>
+
+      <button id="newChatBtn" class="sidebar-btn primary" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        新对话
+      </button>
+
+      <div class="sidebar-section">
+        <h3>最近对话</h3>
+        <ul id="historyList" class="history-list"></ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <button id="clearMemoryBtn" class="sidebar-btn ghost" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
+          清除当前记忆
+        </button>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="main">
+      <header class="topbar">
+        <button id="menuBtn" class="icon-btn" type="button" aria-label="菜单">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <div class="topbar-title">
+          <span>对话</span>
+          <span class="status-dot"></span>
+          <span class="status-text">在线</span>
+        </div>
+      </header>
+
+      <section id="chatView" class="view active">
+        <div id="welcomeScreen" class="welcome">
+          <div class="welcome-glow"></div>
+          <h2>有什么可以帮你的？</h2>
+          <p>我可以帮你管理待办、记账、查天气，还能记住你的生活偏好。</p>
+          <div class="welcome-cards">
+            <button class="welcome-card" data-message="帮我记一下：明天买牛奶">
+              <span class="card-icon">📋</span>
+              <strong>记待办</strong>
+              <span>记录日常事务</span>
+            </button>
+            <button class="welcome-card" data-message="午餐花了 28 元，分类餐饮">
+              <span class="card-icon">💰</span>
+              <strong>记账</strong>
+              <span>追踪日常支出</span>
+            </button>
+            <button class="welcome-card" data-message="北京今天天气怎么样？">
+              <span class="card-icon">🌤</span>
+              <strong>查天气</strong>
+              <span>了解出行信息</span>
+            </button>
+            <button class="welcome-card" data-message="我的个人偏好和爱好有哪些？">
+              <span class="card-icon">✨</span>
+              <strong>查偏好</strong>
+              <span>检索生活偏好</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="messages" class="messages hidden"></div>
+
+        <div class="composer">
+          <div class="composer-chips">
+            <button class="chip" data-message="我有哪些待办？" type="button">待办</button>
+            <button class="chip" data-message="我最近的收入有哪些？" type="button">收入</button>
+            <button class="chip" data-message="我最近有哪些支出？" type="button">支出</button>
+            <button class="chip" data-message="我的个人偏好和爱好有哪些？" type="button">查偏好</button>
+          </div>
+          <form id="chatForm" class="composer-form">
+            <textarea
+              id="messageInput"
+              rows="1"
+              placeholder="输入消息，Enter 发送，Shift+Enter 换行"
+              required
+            ></textarea>
+            <button id="sendBtn" class="send-btn" type="submit" aria-label="发送">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
